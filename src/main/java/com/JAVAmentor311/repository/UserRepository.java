@@ -13,7 +13,4 @@ import javax.transaction.Transactional;
 @Transactional
 @EnableJpaRepositories("com.JAVAmentor311.repository")
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Modifying
-    @Query(value = "update users set name = :name , age = :age where id = :id",nativeQuery = true)
-    void updateUser(@Param("id") Long id, @Param("name") String name, @Param("age") int age);
 }

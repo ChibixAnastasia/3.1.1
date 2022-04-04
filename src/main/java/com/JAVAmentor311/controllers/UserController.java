@@ -2,6 +2,7 @@ package com.JAVAmentor311.controllers;
 
 import com.JAVAmentor311.model.User;
 import com.JAVAmentor311.service.UserService;
+import com.JAVAmentor311.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public String getUser(@PathVariable("id") long id, Model model) {
+    public String getUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUser(id));
         return "/getUser";
     }
@@ -42,19 +43,19 @@ public class UserController {
     }
 
     @GetMapping("/{id}/updateUser")
-    public String update(@PathVariable("id") long id, Model model) {
+    public String update(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUser(id));
         return "/updateUser";
     }
 
     @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
         userService.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}/delete")
-    public String delete(@PathVariable("id") long id) {
+    public String delete(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/users";
     }
